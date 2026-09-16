@@ -1,0 +1,41 @@
+# Python cache and test output
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Streamlit secrets and local overrides
+.streamlit/secrets.toml
+.env
+.env.*
+!.env.example
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Generated exam files and temporary uploads
+*.zip
+Exam_*.docx
+Answer_Key_*.docx
+Version_Mapping_Report.xlsx
+Export_Summary.xlsx
+Validation_Report.xlsx
+uploads/
+output/
+dist/
+build/
+
+# Microsoft Office temporary files
+~$*
+

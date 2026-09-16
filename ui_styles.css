@@ -1,0 +1,65 @@
+/* App chrome only. Native Streamlit widgets retain their keyboard behavior. */
+:root {
+    --mcq-bg: #0e131b;
+    --mcq-surface: #171f2b;
+    --mcq-border: #2b3747;
+    --mcq-text: #edf2f7;
+    --mcq-muted: #aebbc9;
+    --mcq-accent: #6ee7c7;
+}
+.stApp { background: var(--mcq-bg); color: var(--mcq-text); }
+[data-testid="stHeader"] { background: var(--mcq-bg); }
+[data-testid="stMainBlockContainer"], .main .block-container {
+    max-width: 1120px;
+    padding: 2.5rem 2rem 3rem;
+}
+h1, h2, h3 { color: var(--mcq-text); letter-spacing: -0.025em; }
+h1 { font-size: clamp(1.9rem, 4vw, 2.55rem) !important; line-height: 1.18 !important; padding-bottom: .35rem !important; }
+h2 { font-size: 1.5rem !important; line-height: 1.3 !important; padding-top: .4rem !important; }
+h3 { font-size: 1.08rem !important; line-height: 1.4 !important; }
+p, li { line-height: 1.55; }
+[data-testid="stCaptionContainer"] { color: var(--mcq-muted); }
+.brand-line { color: var(--mcq-accent); font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: .25rem; }
+.hero-copy { color: var(--mcq-muted); font-size: 1.05rem; max-width: 760px; margin: 0 0 .4rem; line-height: 1.6; }
+.trust-line { display: flex; flex-wrap: wrap; gap: .4rem 1.3rem; color: var(--mcq-muted); font-size: .79rem; margin: .25rem 0 .6rem; }
+.trust-line span::before { content: "✓"; color: var(--mcq-accent); margin-right: .4rem; }
+.workflow-shell { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .35rem; padding: .45rem; margin: .4rem 0 1rem; border: 1px solid var(--mcq-border); border-radius: .8rem; }
+.workflow-step { display: flex; gap: .6rem; align-items: center; padding: .65rem .7rem; color: var(--mcq-muted); font-size: .85rem; font-weight: 600; border-radius: .45rem; text-decoration: none !important; min-width: 0; }
+a.workflow-step:hover { background: var(--mcq-surface); color: var(--mcq-text); }
+.workflow-number { display: grid; place-items: center; width: 1.6rem; height: 1.6rem; flex: 0 0 auto; border: 1px solid #56677c; border-radius: 50%; font-size: .72rem; }
+.workflow-step.is-active { background: #203c38; color: #edfff9; }
+.workflow-step.is-active .workflow-number { background: var(--mcq-accent); border-color: var(--mcq-accent); color: #102c24; }
+.workflow-step.is-complete .workflow-number { border-color: var(--mcq-accent); color: var(--mcq-accent); }
+.workflow-step[aria-disabled="true"] { color: #a0adbd; }
+[data-testid="stFileUploaderDropzone"] { min-height: 8rem; border: 1px dashed #607c83; border-radius: .65rem; background: #16252b; }
+[data-testid="stFileUploaderDropzone"]:hover { border-color: var(--mcq-accent); }
+[data-testid="stVerticalBlockBorderWrapper"] > div { border-radius: .75rem; }
+.stButton button, .stDownloadButton button { min-height: 2.75rem; border-radius: .5rem; font-weight: 600; box-shadow: none; }
+button[data-testid="stBaseButton-primary"],
+.stButton button[kind="primary"], .stDownloadButton button[kind="primary"] {
+    background: var(--mcq-accent);
+    border-color: var(--mcq-accent);
+    color: #102c24 !important;
+}
+button:disabled { cursor: not-allowed; }
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--mcq-accent) !important; outline-offset: 3px;
+}
+[data-testid="stExpander"] { border-color: var(--mcq-border); border-radius: .65rem; }
+[data-testid="stAlert"] { border-radius: .6rem; }
+[data-testid="stMetric"] { padding: .7rem .85rem; border: 1px solid var(--mcq-border); border-radius: .6rem; background: var(--mcq-surface); }
+[data-testid="stMetricValue"] { font-size: 1.6rem; }
+[data-testid="stDataFrame"], [data-testid="stDataEditor"] { border-radius: .5rem; }
+.stTabs [data-baseweb="tab-list"] { gap: 1.5rem; }
+hr { margin: 1.5rem 0 !important; border-color: var(--mcq-border) !important; }
+[id="start-building"], [id="review-questions"], [id="configure-exam"], [id="preview-exam"], [id="download-package"], [id="required-review"] { scroll-margin-top: 5rem; }
+.app-footer { display: flex; justify-content: space-between; gap: .8rem; border-top: 1px solid var(--mcq-border); padding: 1.2rem 0 .2rem; margin-top: 2rem; color: var(--mcq-muted); font-size: .78rem; }
+@media (max-width: 640px) {
+    [data-testid="stMainBlockContainer"], .main .block-container { padding: 1.5rem 1rem 2rem; }
+    .workflow-shell { gap: .15rem; padding: .3rem; }
+    .workflow-step { flex-direction: column; gap: .35rem; padding: .55rem .1rem; font-size: .68rem; text-align: center; }
+    .workflow-number { width: 1.45rem; height: 1.45rem; }
+    .trust-line { gap: .3rem .8rem; }
+    .app-footer { flex-direction: column; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }

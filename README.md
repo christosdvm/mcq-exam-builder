@@ -46,18 +46,18 @@ The optional preview sits inside the configuration stage. Skipping it does not b
 
 ## Engineering evidence
 
-The current development baseline builds on v15.4.0. Its behaviour is checked with synthetic fixtures rather than private examination material:
+The public snapshot is validated with synthetic fixtures rather than private examination material:
 
-- **98 automated tests passed** in a Python 3.12 environment;
+- automated synthetic regression and compatibility checks run in CI on Python 3.12;
 - all supported source extensions are exercised with generated synthetic fixtures;
-- correct-answer identity is checked across 100 shuffled versions;
-- 250 deterministic Word crop geometries are verified;
+- correct-answer identity is checked across shuffled versions;
+- deterministic Word crop geometries are verified;
 - malformed Office containers, archive resource limits and invalid images have rejection tests at the import boundary;
 - formula-like spreadsheet values are neutralised before export;
 - declared runtime dependencies are checked for known vulnerabilities in CI;
 - Streamlit tests cover cold start, upload, review, preview, configuration and download.
 
-See [Quality and verification](docs/QUALITY.md) for the test command and scope, or [GitHub Actions](../../actions/workflows/tests.yml) for current results. These tests provide regression evidence, not proof that every document layout will import correctly. Pilot adoption and time-saving results have not yet been measured.
+See [Quality and verification](docs/QUALITY.md) for the public verification scope, or [GitHub Actions](https://github.com/christosdvm/mcq-exam-builder/actions/workflows/tests.yml) for current results. These tests provide regression evidence, not proof that every document layout will import correctly. Pilot adoption and time-saving results have not yet been measured.
 
 ## Architecture
 
@@ -82,7 +82,7 @@ python -m pip install -r requirements.txt
 python -m streamlit run app.py
 ```
 
-On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1` instead. The `START_MCQ_BUILDER_V15.bat` launcher provides a guided local start.
+On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1` instead.
 
 ## Test
 
@@ -96,20 +96,20 @@ The format suite uses LibreOffice to create and convert real synthetic fixtures.
 
 | Document | Purpose |
 | --- | --- |
-| [Product vision](docs/PRODUCT_VISION.md) | User, problem, principles, success measures and roadmap |
-| [Project profile](docs/PROJECT_PROFILE.md) | Concise product description, maintainer background and project summaries |
-| [Architecture](docs/ARCHITECTURE.md) | Current system, invariants and planned modular boundary |
-| [Supported formats](docs/SOURCE_FORMATS.md) | Input contracts, examples and explicit limits |
-| [Quality and verification](docs/QUALITY.md) | Reproducible evidence for the current baseline |
-| [Deployment guide](docs/DEPLOYMENT_GUIDE.md) | Staging, release and rollback procedure |
-| [Development workflow](docs/DEVELOPMENT_WORKFLOW.md) | Branch, review, test and release conventions |
+| [Product vision](docs/PRODUCT_VISION.md) | User, problem, principles and non-goals |
+| [Project profile](docs/PROJECT_PROFILE.md) | Concise product description and maintainer context |
+| [Architecture](docs/ARCHITECTURE.md) | Current system and safety boundaries |
+| [Supported formats](docs/SOURCE_FORMATS.md) | Input contracts and explicit limits |
+| [Quality and verification](docs/QUALITY.md) | Public verification scope |
+| [Deployment guide](docs/DEPLOYMENT_GUIDE.md) | Deployment guidance |
+| [Development workflow](docs/DEVELOPMENT_WORKFLOW.md) | Branch, review and test conventions |
 | [Privacy notice](PRIVACY.md) | Processing, temporary files and hosting boundaries |
 | [Security policy](SECURITY.md) | Vulnerability reporting and supported version |
 
 ## Roadmap
 
 1. Finish separating export logic from the UI, preserving the tested generation and validation behaviour.
-2. Observe five lecturers preparing examinations; measure completion, interventions and preparation time against their existing workflow.
+2. Observe lecturers preparing examinations; measure completion, interventions and preparation time against their existing workflow.
 3. Use those findings to prioritise additional formats, institutional deployment or a programmatic interface.
 
 The longer-term aim is a reusable assessment-preparation core that can support different delivery interfaces. Question generation, proctoring and student-record management remain outside the current scope.
